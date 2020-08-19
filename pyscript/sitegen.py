@@ -56,14 +56,14 @@ def replaceheadtag(f_md_lines, headtag):
             f_md_lines[i] = tmpstr
     for item in range(0, len(tmplist)):
         if(layer < tmplist[item][0]):
-            headtag.append("<ul>\n<li>" + tmplist[item][1] + "</li>\n")
+            headtag.append("<ul>\n<li class=\"bookmark"+str(tmplist[item][0])+"\">" + tmplist[item][1] + "</li>\n")
             layer = layer + 1
         elif(layer > tmplist[item][0]):
             headtag[len(headtag)-2] = headtag[len(headtag)-2] + "</ul>\n"
             layer = layer - 1
         else:
             if(layer != 0):
-                headtag.append("<li>"+tmplist[item][1]+"</li>\n")
+                headtag.append("<li class=\"bookmark"+str(tmplist[item][0])+"\">"+tmplist[item][1]+"</li>\n")
     while(layer != 0):
         headtag.append("</ul>\n")
         layer = layer - 1
