@@ -86,6 +86,28 @@ if __name__ == "__main__":
     print(file_list)
     print(dir_list)
 
+    for mode in ["lightstyle", "darkstyle"]:
+        css_template = open("./pyscript/styletemplate.css", mode='r', encoding="utf-8")
+        css_template_lines = css_template.readlines()
+        css_template.close()
+
+        css_conf = open("./pyscript/"+mode+".conf", mode='r', encoding="utf-8")
+        css_conf_lines = css_conf.readlines()
+        css_conf.close()
+        replace_dict = {}
+
+        for i in css_conf_lines:
+            tmpls = i.split(": ")
+            replace_dict[tmpls[0]] = tmpls[1].strip()
+
+        css_output = open(mode+".css", mode='w', encoding="utf-8")
+        for string in css_template_lines:
+            replacemark = re.search(r"\!([\d\D]*)\!", string)
+            if(replacemark != None):
+                string = string.replace(str(replacemark.group()), replace_dict[str(replacemark.group())])
+            css_output.write(string)
+        css_output.close()
+
     h_template = open("./pyscript/template.html", mode='r', encoding="utf-8")
     h_template_lines = h_template.readlines()
     insertindex = -1

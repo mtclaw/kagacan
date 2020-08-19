@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #8cc7dc;
+    background-color: !body background-color!;
 }
 
 footer {
@@ -8,8 +8,8 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #ffd573;
-    color: #a67400;
+    background-color: !footer background-color!;
+    color: !footer color!;
     text-align: center;
     border-style: solid;
     border-width: 2px 0px 2px 0px;
@@ -19,8 +19,8 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
-    background-color: #39aecf;
-    color: #ffffff;
+    background-color: !header background-color!;
+    color: !header color!;
     text-align: left;
     border-style: solid;
     border-width: 2px 0px 2px 0px;
@@ -28,13 +28,13 @@ header {
 
 .headertext {
     padding-left: 80px;
-    color: #ffffff;
+    color: !.headertext color!;
 }
 
 nav {
     width: 100%;
     overflow: hidden;
-    background-color: #ffd573;
+    background-color: !nav background-color!;
     border-style: solid;
     border-width: 2px 0px 2px 0px;
 }
@@ -43,22 +43,22 @@ nav a {
     float: left;
     display: block;
     width: 14.8%;
-    color: #a67400;
+    color: !nav a color!;
     text-align: center;
     padding: 14px;
     text-decoration: none;
 }
 
 nav a:hover {
-    background-color: #a67400;
-    color: #ffd573;
+    background-color: !nav a:hover background-color!;
+    color: !nav a:hover color!;
 }
 
 .content {
     padding-top: 10px;
     padding-bottom: 80px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: !.content background-color!;
 }
 
 .maintext {
@@ -77,7 +77,7 @@ padding-top: 60px;
 }
 
 .content h1, h2{
-    color: #ff2300;
+    color: !.content h1, h2 color!;
 }
 
 #category{
@@ -86,8 +86,8 @@ padding-top: 60px;
     top: 100px;
     width: 20%;
     visibility: hidden;
-    background-color: #61b7cf;
-    color: #025167;
+    background-color: !#category background-color!;
+    color: !#category color!;
     border-style: solid;
     text-align: center;
     border-radius: 2px;
@@ -105,22 +105,22 @@ padding-top: 60px;
 
 #categorywrapper a:link{
     text-decoration: none;
-    color: #025167;
+    color: !#categorywrapper a:link color!;
 }
 
 #categorywrapper a:hover{
     text-decoration: underline;
-    color: #216477;
+    color: !#categorywrapper a:hover color!;
 }
 
 #categorywrapper a.visited{
     text-decoration: none;
-    color: #000000;
+    color: !#categorywrapper a.visited color!;
 }
 
 #categorywrapper a.visited:hover{
     text-decoration: underline;
-    color: #2f4f4f;
+    color: !#categorywrapper a.visited:hover color!;
 }
 
 .bookmark1{
@@ -139,8 +139,8 @@ padding-top: 60px;
     bottom: 115px;
     border: none;
     outline: none;
-    background-color: #ff8673;
-    color: #a61700;
+    background-color: !#gototopbtn background-color!;
+    color: !#gototopbtn color!;
     font-size: 18px;
     text-align: center;
     cursor: pointer;
@@ -149,27 +149,27 @@ padding-top: 60px;
 }
 
 del{
-    color: #d0d0d0;
+    color: !del color!;
 }
 
 a#togglecolor{
     float: right;
-    background-color: #025167;
+    background-color: !a#togglecolor background-color!;
     width: 7%;
     padding: 12px;
     text-align: center;
     border-style: solid;
-    border-color: #39aecf;
+    border-color: !a#togglecolor border-color!;
     border-width: 12px;
 }
 
 a#togglecolor:hover{
     float: right;
-    background-color: #057d9f;
+    background-color: !a#togglecolor:hover background-color!;
     width: 7%;
     padding: 12px;
     text-align: center;
     border-style: solid;
-    border-color: #39aecf;
+    border-color: !a#togglecolor:hover border-color!;
     border-width: 12px;
 }
