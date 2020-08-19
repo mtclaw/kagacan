@@ -51,19 +51,19 @@ def replaceheadtag(f_md_lines, headtag):
         headmark = re.match("^#+", f_md_lines[i])
         if(headmark != None):
             headmarkgrade = headmark.span()[1]
-            tmpstr = "<h" + str(headmarkgrade) + ">" + (f_md_lines[i][headmarkgrade+1:]).rstrip('\n') + "</h" + str(headmarkgrade) + ">\n"
+            tmpstr = "<h" + str(headmarkgrade) + ">" + (f_md_lines[i][headmarkgrade+1:]).rstrip('\n') + "</h" + str(headmarkgrade) + ">" + "<a name=\"" + (f_md_lines[i][headmarkgrade+1:]).rstrip('\n') +"\"></a>" + "\n"
             tmplist.append([headmarkgrade, (f_md_lines[i][headmarkgrade+1:]).rstrip('\n')])
             f_md_lines[i] = tmpstr
     for item in range(0, len(tmplist)):
         if(layer < tmplist[item][0]):
-            headtag.append("<ul>\n<li class=\"bookmark"+str(tmplist[item][0])+"\">" + tmplist[item][1] + "</li>\n")
+            headtag.append("<ul>\n<li class=\"bookmark"+str(tmplist[item][0])+"\">" + "<a href=\"javascript:gotopos('" + tmplist[item][1] +"')\">" + tmplist[item][1] + "</a></li>\n")
             layer = layer + 1
         elif(layer > tmplist[item][0]):
             headtag[len(headtag)-2] = headtag[len(headtag)-2] + "</ul>\n"
             layer = layer - 1
         else:
             if(layer != 0):
-                headtag.append("<li class=\"bookmark"+str(tmplist[item][0])+"\">"+tmplist[item][1]+"</li>\n")
+                headtag.append("<li class=\"bookmark"+str(tmplist[item][0])+"\">" + "<a href=\"javascript:gotopos('" + tmplist[item][1] +"')\">" + tmplist[item][1] + "</a></li>\n")
     while(layer != 0):
         headtag.append("</ul>\n")
         layer = layer - 1

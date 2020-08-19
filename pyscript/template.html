@@ -48,16 +48,33 @@
     <button onclick="topFunction()" id="gototopbtn" title="回到顶部">↑</button> 
 
     <script>
+
+    var category = document.getElementById("category");
+    var gototopbtn = document.getElementById("gototopbtn");
+
+    var catecontentlist = category.getElementsByTagName("a");
+
     window.onscroll = function() {stickeyheader()};
 
     var navbar = document.getElementsByTagName("nav")[0];
     var sticky = navbar.offsetTop;
 
-    var category = document.getElementById("category");
-    var gototopbtn = document.getElementById("gototopbtn");
-
     function stickeyheader() 
     {
+        for (i = 0; i < catecontentlist.length; i++)
+        { 
+            var anchor = catecontentlist[i];
+            var target = document.getElementsByName(anchor.innerHTML)[0];
+            var toppos = target.offsetTop;
+            if(window.pageYOffset >= toppos-105)
+            {
+                anchor.classList.add("visited")
+            }
+            else
+            {
+                anchor.classList.remove("visited")
+            }
+        }
         if (window.pageYOffset >= sticky) 
         {
             navbar.classList.add("sticky")
@@ -76,6 +93,13 @@
     {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    function gotopos(nametag)
+    {
+        var target = document.getElementsByName(nametag)[0];
+        var toppos = target.offsetTop;
+        window.scrollTo(0,toppos-105);
     }
     </script>
 

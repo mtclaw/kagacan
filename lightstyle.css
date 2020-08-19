@@ -103,6 +103,26 @@ padding-top: 60px;
     list-style-type: none;
 }
 
+#categorywrapper a:link{
+    text-decoration: none;
+    color: #025167;
+}
+
+#categorywrapper a:hover{
+    text-decoration: underline;
+    color: #216477;
+}
+
+#categorywrapper a.visited{
+    text-decoration: none;
+    color: #000000;
+}
+
+#categorywrapper a.visited:hover{
+    text-decoration: underline;
+    color: #2f4f4f;
+}
+
 .bookmark1{
     padding-left: 0px;
 }

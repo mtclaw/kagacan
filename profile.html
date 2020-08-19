@@ -31,9 +31,9 @@
       
     <div class="content">
     <div class="maintext">
-<h1>简介</h1>
+<h1>简介</h1><a name="简介"></a>
 <p></p>
-<h2>Kagami Cannery (镜面抛光罐头厂) </h2>
+<h2>Kagami Cannery (镜面抛光罐头厂) </h2><a name="Kagami Cannery (镜面抛光罐头厂) "></a>
 <p>一人乐摸鱼社团.</p>
 <p>一人乐的时候装作有个社团, 感觉气场都不一样了.</p>
 <p>说来与社团关系密切者还有几人, 不过都不是二次猿, 自然不在成员名单上的.</p>
@@ -44,7 +44,7 @@
 <p>不过"Kagami Cannery"果然还是太长了, 叫kagacan就好. <- by 写完介绍30分钟后突然意识到的我.</p>
 <p>不是"加贺罐".</p>
 <p></p>
-<h2>mtclaw</h2>
+<h2>mtclaw</h2><a name="mtclaw"></a>
 <p>我是mtclaw. 因为太长, 经常只打mtc. 大小写随意, 名字读法随意.</p>
 <ul>
 <li>英文字母流派: "嗯亩踢西"</li>
@@ -99,10 +99,10 @@
         <div id="categorywrapper">
             <ul id="categorycontent">
 <ul>
-<li class="bookmark1">简介</li>
+<li class="bookmark1"><a href="javascript:gotopos('简介')">简介</a></li>
 <ul>
-<li class="bookmark2">Kagami Cannery (镜面抛光罐头厂) </li>
-<li class="bookmark2">mtclaw</li>
+<li class="bookmark2"><a href="javascript:gotopos('Kagami Cannery (镜面抛光罐头厂) ')">Kagami Cannery (镜面抛光罐头厂) </a></li>
+<li class="bookmark2"><a href="javascript:gotopos('mtclaw')">mtclaw</a></li>
 </ul>
 </ul>
 
@@ -114,16 +114,33 @@
     <button onclick="topFunction()" id="gototopbtn" title="回到顶部">↑</button> 
 
     <script>
+
+    var category = document.getElementById("category");
+    var gototopbtn = document.getElementById("gototopbtn");
+
+    var catecontentlist = category.getElementsByTagName("a");
+
     window.onscroll = function() {stickeyheader()};
 
     var navbar = document.getElementsByTagName("nav")[0];
     var sticky = navbar.offsetTop;
 
-    var category = document.getElementById("category");
-    var gototopbtn = document.getElementById("gototopbtn");
-
     function stickeyheader() 
     {
+        for (i = 0; i < catecontentlist.length; i++)
+        { 
+            var anchor = catecontentlist[i];
+            var target = document.getElementsByName(anchor.innerHTML)[0];
+            var toppos = target.offsetTop;
+            if(window.pageYOffset >= toppos-105)
+            {
+                anchor.classList.add("visited")
+            }
+            else
+            {
+                anchor.classList.remove("visited")
+            }
+        }
         if (window.pageYOffset >= sticky) 
         {
             navbar.classList.add("sticky")
@@ -142,6 +159,13 @@
     {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    function gotopos(nametag)
+    {
+        var target = document.getElementsByName(nametag)[0];
+        var toppos = target.offsetTop;
+        window.scrollTo(0,toppos-105);
     }
     </script>
 

@@ -31,12 +31,12 @@
       
     <div class="content">
     <div class="maintext">
-<h1>欢迎</h1>
+<h1>欢迎</h1><a name="欢迎"></a>
 <p>这里是一人乐摸鱼社团 "Kagami Cannery" (镜面抛光罐头厂) 的主页.</p>
 <p>说是社团主页, 其实是和个人博客混用的, 个人博客的成分还多一些.</p>
 <p>最近好像很流行一人乐的时候装作有个社团的样子 (笑)</p>
 <p></p>
-<h1>关于社团活动</h1>
+<h1>关于社团活动</h1><a name="关于社团活动"></a>
 <p>摸~呀摸~呀摸.</p>
 <p>摸鱼使人快乐, 摸鱼使人有创作欲.</p>
 <p>小摸怡情, 大摸伤身, 强摸炒番鱿鱼.</p>
@@ -50,8 +50,8 @@
         <div id="categorywrapper">
             <ul id="categorycontent">
 <ul>
-<li class="bookmark1">欢迎</li>
-<li class="bookmark1">关于社团活动</li>
+<li class="bookmark1"><a href="javascript:gotopos('欢迎')">欢迎</a></li>
+<li class="bookmark1"><a href="javascript:gotopos('关于社团活动')">关于社团活动</a></li>
 </ul>
 
             </ul>
@@ -62,16 +62,33 @@
     <button onclick="topFunction()" id="gototopbtn" title="回到顶部">↑</button> 
 
     <script>
+
+    var category = document.getElementById("category");
+    var gototopbtn = document.getElementById("gototopbtn");
+
+    var catecontentlist = category.getElementsByTagName("a");
+
     window.onscroll = function() {stickeyheader()};
 
     var navbar = document.getElementsByTagName("nav")[0];
     var sticky = navbar.offsetTop;
 
-    var category = document.getElementById("category");
-    var gototopbtn = document.getElementById("gototopbtn");
-
     function stickeyheader() 
     {
+        for (i = 0; i < catecontentlist.length; i++)
+        { 
+            var anchor = catecontentlist[i];
+            var target = document.getElementsByName(anchor.innerHTML)[0];
+            var toppos = target.offsetTop;
+            if(window.pageYOffset >= toppos-105)
+            {
+                anchor.classList.add("visited")
+            }
+            else
+            {
+                anchor.classList.remove("visited")
+            }
+        }
         if (window.pageYOffset >= sticky) 
         {
             navbar.classList.add("sticky")
@@ -90,6 +107,13 @@
     {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    function gotopos(nametag)
+    {
+        var target = document.getElementsByName(nametag)[0];
+        var toppos = target.offsetTop;
+        window.scrollTo(0,toppos-105);
     }
     </script>
 
