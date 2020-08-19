@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    background-color: #8cc7dc;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffd573;
+    color: #a67400;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px 0px 2px 0px;
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #39aecf;
+    color: #ffffff;
+    text-align: left;
+    border-style: solid;
+    border-width: 2px 0px 2px 0px;
+}
+
+.headertext {
+    padding-left: 80px;
+    color: #ffffff;
+}
+
+nav {
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffd573;
+    border-style: solid;
+    border-width: 2px 0px 2px 0px;
+}
+
+nav a {
+    float: left;
+    display: block;
+    width: 14.8%;
+    color: #a67400;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #a67400;
+    color: #ffd573;
+}
+
+.content {
+    padding-top: 10px;
+    padding-bottom: 80px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.maintext {
+    padding-top: 20px;
+    padding-left: 80px;
+    width: 70%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+
+.sticky + .content {
+padding-top: 60px;
+}
+
+.content h1, h2{
+    color: #ff2300;
+}
+
+#category{
+    position: fixed;
+    right: 40px;
+    top: 100px;
+    width: 20%;
+    visibility: hidden;
+    background-color: #61b7cf;
+    color: #025167;
+    border-style: solid;
+    text-align: center;
+    border-radius: 2px;
+}
+
+#categorywrapper{
+    padding: 12px;
+    text-align: left;
+}
+
+#category ul{
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.bookmark{
+    padding-left: 15px;
+    list-style-type: none;
+}
+
+#gototopbtn{
+    visibility: hidden;
+    z-index: 99;
+    position: fixed;
+    right: 0px;
+    bottom: 115px;
+    border: none;
+    outline: none;
+    background-color: #ff8673;
+    color: #a61700;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 2px;
+}
+
+del{
+    color: #d0d0d0
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="lightstyle.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <header>
+        <div class="headertext">
+        <h1>Kagacan</h1>
+        <p>Kagami Cannery official site.</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="javascript:void(0)">首页</a>
+        <a href="javascript:void(0)">简介</a>
+        <a href="javascript:void(0)">博文(按时间归档)</a>
+        <a href="javascript:void(0)">博文(按目录归档)</a>
+        <a href="javascript:void(0)">使用规约</a>
+        <a href="javascript:void(0)">RSS订阅</a>
+    </nav>
+      
+    <div class="content">
+    <div class="maintext">
+<h1>欢迎</h1>
+<p>这里是一人乐摸鱼社团 "Kagami Cannery" (镜面抛光罐头厂) 的主页.</p>
+<p>说是社团主页, 其实是和个人博客混用的, 个人博客的成分还多一些.</p>
+<p>最近好像很流行一人乐的时候装作有个社团的样子 (笑)</p>
+<p></p>
+<h1>关于社团活动</h1>
+<p>摸~呀摸~呀摸.</p>
+<p>摸鱼使人快乐, 摸鱼使人有创作欲.</p>
+<p>小摸怡情, 大摸伤身, 强摸炒番鱿鱼.</p>
+<p>(也就是挖了很多大坑还一个没填完)</p>
+        
+    </div>
+    
+
+    <div id="category">
+        <p><b>- 目录 -</b></p>
+        <div id="categorywrapper">
+            <ul id="categorycontent">
+<ul>
+<li>欢迎</li>
+<li>关于社团活动</li>
+</ul>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <button onclick="topFunction()" id="gototopbtn" title="回到顶部">↑</button> 
+
+    <script>
+    window.onscroll = function() {stickeyheader()};
+
+    var navbar = document.getElementsByTagName("nav")[0];
+    var sticky = navbar.offsetTop;
+
+    var category = document.getElementById("category");
+    var gototopbtn = document.getElementById("gototopbtn");
+
+    function stickeyheader() 
+    {
+        if (window.pageYOffset >= sticky) 
+        {
+            navbar.classList.add("sticky")
+            category.style.visibility="visible";
+            gototopbtn.style.visibility="visible";
+        } 
+        else 
+        {
+            navbar.classList.remove("sticky");
+            category.style.visibility="hidden";
+            gototopbtn.style.visibility="hidden";
+        }
+    }
+
+    function topFunction()
+    {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+
+    <footer>
+        <p>Copyright © 2020 mtclaw All Rights Reserved. </p>
+    </footer>
+</body>
+
