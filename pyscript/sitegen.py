@@ -85,6 +85,8 @@ if __name__ == "__main__":
     get_file_path(root_path,file_list,dir_list)
     print(file_list)
     print(dir_list)
+    for dir in dir_list:
+        os.makedirs(dir[10:], exist_ok=True)
 
     for mode in ["lightstyle", "darkstyle"]:
         css_template = open("./pyscript/styletemplate.css", mode='r', encoding="utf-8")
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     h_template.close()
 
     for file in file_list:
-        f_html = open((file[10:-3]+".html"), mode='w', encoding="utf-8")
+        f_html = open((file[10:-3]+".html"), mode='w+', encoding="utf-8")
 
         for i in range(0, insertindex+1):
             f_html.write(h_template_lines[i])

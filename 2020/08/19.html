@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="lightstyle.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <header>
+        <a onclick="togglecolor()" id="togglecolor">暗色模式</a>
+        <div class="headertext">
+        <h1>Kagacan</h1>
+        <p>Kagami Cannery official site.</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="profile.html">简介</a>
+        <a href="javascript:void(0)">博文(按时间归档)</a>
+        <a href="javascript:void(0)">博文(按目录归档)</a>
+        <a href="javascript:void(0)">使用规约</a>
+        <a href="javascript:void(0)">RSS订阅</a>
+    </nav>
+      
+    <div class="content">
+    <div class="maintext">
+<h1>建站过程记录</h1><a name="建站过程记录"></a>
+<p></p>
+<p>怎么说呢, 造这个目前勉强能用的轮子花的时间并没有想象中的那么长, 也就两天.</p>
+<p>暂时可以用了, 我不搞太多东西了.</p>
+<p></p>
+<h2>综述</h2><a name="综述"></a>
+<p></p>
+<h3>目的</h3><a name="目的"></a>
+<p>我想要一个博客. </p>
+<p>顺便给我的一人乐社团弄个还能看的官网, 这个样子.</p>
+<p></p>
+<h3>背景</h3><a name="背景"></a>
+<p>之前尝试过从 hexo, hugo 到 bootstrap 之类的各种轮子.</p>
+<p>结果最后还是因为并不会定制而自己造了.</p>
+<p>从头到脚都受控的东西用起来就是比较的爽, 啊.</p>
+<p></p>
+<h2>预期目标</h2><a name="预期目标"></a>
+<h3>首页</h3><a name="首页"></a>
+<p>- [X] 欢迎</p>
+<p>- [X] 关于社团活动</p>
+<p>- [ ] 作品列表</p>
+<h3>简介</h3><a name="简介"></a>
+<p>- [X] Kagacan</p>
+<p>- [X] mtc</p>
+<h3>博客</h3><a name="博客"></a>
+<h4>文件结构</h4><a name="文件结构"></a>
+<p>- [X] 文件存放路径: YYYY/MM/DD.md, 按照相同目录结构翻译为YYYY/MM/DD.html</p>
+<p>- [ ] 自动按时间顺序生成目录并存放于archive_time.html中</p>
+<p>- [ ] 自动按分类tag生成目录并存放于archive_category.html中</p>
+<h4>文档内容</h4><a name="文档内容"></a>
+<p>- [ ] 支持我常用的md语法(不是全部)</p>
+<p>    - [X] 各级标题</p>
+<p>    - [X] 无序列表</p>
+<p>- [ ] 支持在md文件中加入额外内容, 如创建时间, 修改时间, 分类tag等</p>
+<p>- [ ] 支持直接写无需翻译的html</p>
+<p>- [ ] 生成html时自动跳过未经更改的md文件</p>
+<h3>RSS</h3><a name="RSS"></a>
+<p>- [ ] 自动生成可以被thunderbird解析的rss.xml</p>
+<h3>CSS</h3><a name="CSS"></a>
+<p>- [X] 亮色模式</p>
+<p>- [ ] 暗色模式</p>
+<p>- [ ] 在打开新标签时记住当前模式并应用于新标签页</p>
+<p>- [ ] 自动应用于各级目录</p>
+<h3>小部件</h3><a name="小部件"></a>
+<p>- [ ] 切换配色按钮</p>
+<p>- [ ] 文章目录</p>
+<h3>大目标</h3><a name="大目标"></a>
+<p>- [ ] [响应式网页设计简单入门](https://www.cnblogs.com/Wayou/p/responsive_design_step_by_step.html)</p>
+<p>- [ ] 也许编译原理有助于翻译器的设计, 现在这个太蠢了</p>
+<p></p>
+<h2>主要工具</h2><a name="主要工具"></a>
+<p>[在线配色器兼布局参考 参数: Hue 216 Angle 30 RGB 057d9f 三角形搭配](http://www.peise.net/tools/web/#3o31Tw0w0w0w0)</p>
+<p>[有什么组件不会写的来这里一般都能找到, 天下文章一大抄啊](https://www.w3schools.com/howto)</p>
+<p></p>
+<h2>经验和教训</h2><a name="经验和教训"></a>
+<ul>
+<li>假如你写 for in 循环, 就不要在循环体里改数组长度.</li>
+        
+    </div>
+    
+
+    <div id="category">
+        <p><b>- 目录 -</b></p>
+        <div id="categorywrapper">
+            <ul id="categorycontent">
+<ul>
+<li class="bookmark1"><a href="javascript:gotopos('建站过程记录')">建站过程记录</a></li>
+<ul>
+<li class="bookmark2"><a href="javascript:gotopos('综述')">综述</a></li>
+<ul>
+<li class="bookmark3"><a href="javascript:gotopos('目的')">目的</a></li>
+</ul>
+<li class="bookmark3"><a href="javascript:gotopos('背景')">背景</a></li>
+<ul>
+<li class="bookmark3"><a href="javascript:gotopos('首页')">首页</a></li>
+<li class="bookmark3"><a href="javascript:gotopos('简介')">简介</a></li>
+<li class="bookmark3"><a href="javascript:gotopos('博客')">博客</a></li>
+<ul>
+<li class="bookmark4"><a href="javascript:gotopos('文件结构')">文件结构</a></li>
+</ul>
+<li class="bookmark4"><a href="javascript:gotopos('文档内容')">文档内容</a></li>
+<li class="bookmark3"><a href="javascript:gotopos('CSS')">CSS</a></li>
+<li class="bookmark3"><a href="javascript:gotopos('小部件')">小部件</a></li>
+</ul>
+<li class="bookmark3"><a href="javascript:gotopos('大目标')">大目标</a></li>
+<li class="bookmark2"><a href="javascript:gotopos('经验和教训')">经验和教训</a></li>
+</ul>
+</ul>
+
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <button onclick="topFunction()" id="gototopbtn" title="回到顶部">↑</button> 
+
+    <script>
+
+    var category = document.getElementById("category");
+    var gototopbtn = document.getElementById("gototopbtn");
+
+    var catecontentlist = category.getElementsByTagName("a");
+
+    window.onscroll = function() {stickeyheader()};
+
+    var navbar = document.getElementsByTagName("nav")[0];
+    var sticky = navbar.offsetTop;
+
+    function stickeyheader() 
+    {
+        for (i = 0; i < catecontentlist.length; i++)
+        { 
+            var anchor = catecontentlist[i];
+            var target = document.getElementsByName(anchor.innerHTML)[0];
+            var toppos = target.offsetTop;
+            if(window.pageYOffset >= toppos-105)
+            {
+                anchor.classList.add("visited")
+            }
+            else
+            {
+                anchor.classList.remove("visited")
+            }
+        }
+        if (window.pageYOffset >= sticky) 
+        {
+            navbar.classList.add("sticky")
+            category.style.visibility="visible";
+            gototopbtn.style.visibility="visible";
+        } 
+        else 
+        {
+            navbar.classList.remove("sticky");
+            category.style.visibility="hidden";
+            gototopbtn.style.visibility="hidden";
+        }
+    }
+
+    function topFunction()
+    {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    function gotopos(nametag)
+    {
+        var target = document.getElementsByName(nametag)[0];
+        var toppos = target.offsetTop;
+        window.scrollTo(0,toppos-105);
+    }
+
+    var isColorLight = true;
+    var stylesheet = document.getElementsByTagName("link")[0];
+    var togglecolorbtm = document.getElementById("togglecolor");
+
+    function togglecolor()
+    {
+        if(isColorLight)
+        {
+            stylesheet.href = "darkstyle.css";
+            isColorLight = false;
+            togglecolorbtm.innerHTML = "亮色模式";
+        }
+        else
+        {
+            stylesheet.href = "lightstyle.css";
+            isColorLight = true;
+            togglecolorbtm.innerHTML = "暗色模式";
+        }
+    }
+
+    </script>
+
+    <footer>
+        <p>Copyright © 2020 mtclaw All Rights Reserved.  Contact: kagamicannery@outlook.com</p>
+    </footer>
+</body>
+
