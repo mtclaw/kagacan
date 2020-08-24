@@ -131,6 +131,14 @@ padding-top: 60px;
     padding-left: 25px;
 }
 
+.bookmark3{
+    padding-left: 50px;
+}
+
+.bookmark4{
+    padding-left: 75px;
+}
+
 #gototopbtn{
     visibility: hidden;
     z-index: 99;

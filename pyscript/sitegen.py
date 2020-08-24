@@ -59,7 +59,7 @@ def replaceheadtag(f_md_lines, headtag):
             headtag.append("<ul>\n<li class=\"bookmark"+str(tmplist[item][0])+"\">" + "<a href=\"javascript:gotopos('" + tmplist[item][1] +"')\">" + tmplist[item][1] + "</a></li>\n")
             layer = layer + 1
         elif(layer > tmplist[item][0]):
-            headtag[len(headtag)-2] = headtag[len(headtag)-2] + "</ul>\n"
+            headtag.append("</ul>\n<li class=\"bookmark"+str(tmplist[item][0])+"\">" + "<a href=\"javascript:gotopos('" + tmplist[item][1] +"')\">" + tmplist[item][1] + "</a></li>\n")
             layer = layer - 1
         else:
             if(layer != 0):
@@ -76,18 +76,16 @@ def replaceparagraph(f_md_lines):
             f_md_lines[i] = "<p>"+f_md_lines[i].rstrip('\n')+"</p>\n"
 
 if __name__ == "__main__":
-    #根目录路径
+
+    # make file system structure
     root_path = r"./content"
-    #用来存放所有的文件路径
     file_list = []
-    #用来存放所有的目录路径
     dir_list = []
     get_file_path(root_path,file_list,dir_list)
-    print(file_list)
-    print(dir_list)
     for dir in dir_list:
         os.makedirs(dir[10:], exist_ok=True)
 
+    # generate lightstyle.css darkstyle.css
     for mode in ["lightstyle", "darkstyle"]:
         css_template = open("./pyscript/styletemplate.css", mode='r', encoding="utf-8")
         css_template_lines = css_template.readlines()
@@ -110,11 +108,22 @@ if __name__ == "__main__":
             css_output.write(string)
         css_output.close()
 
+    # generate .html
+
+    # read template and find insert point
     h_template = open("./pyscript/template.html", mode='r', encoding="utf-8")
     h_template_lines = h_template.readlines()
+    cssindex = -1
+    navindex = -1
     insertindex = -1
     categoryindex = -1
     for i in range(0, len(h_template_lines)-1):
+        cssmark = re.search("<link", h_template_lines[i])
+        if(cssmark != None):
+            cssindex = i
+        navmark = re.search("<nav>", h_template_lines[i])
+        if(navmark != None):
+            navindex = i
         insertmark = re.search("maintext", h_template_lines[i])
         if(insertmark != None):
             insertindex = i
@@ -123,14 +132,43 @@ if __name__ == "__main__":
             categoryindex = i
     h_template.close()
 
+    # write into .html by line 
     for file in file_list:
         f_html = open((file[10:-3]+".html"), mode='w+', encoding="utf-8")
 
-        for i in range(0, insertindex+1):
+        # copy from template.html
+        for i in range(0, cssindex):
             f_html.write(h_template_lines[i])
 
+        # relative path
+        r_path = os.path.dirname((file[10:-3]+".html"))
+        if(len(r_path) == 0):
+            r_path = "./"
+        else:
+            r_path = "../../"
+
+        # css <rely on r_path>
+        f_html.write(h_template_lines[cssindex].replace("lightstyle.css", r_path + "lightstyle.css"))
+
+        # title <write later>
+
+        # copy from template.html
+        for i in range(cssindex+1, navindex+1):
+            f_html.write(h_template_lines[i])
+
+        # navbar <rely on r_path> <other link write later>
+        navlink = ["index.html", "profile.html"]
+        for i in range(1, 3):
+            f_html.write(h_template_lines[navindex+i].replace("javascript:void(0)", r_path + navlink[i-1]))
+
+        for i in range(navindex+3, insertindex+1):
+            f_html.write(h_template_lines[i])
+
+        # read markdown file
         f_md = open(file, mode='r', encoding="utf-8")
         f_md_lines = f_md.readlines()
+
+        # translate markdowm to html
 
         headtag = []
 
@@ -147,6 +185,8 @@ if __name__ == "__main__":
         for i in f_md_lines:
             f_html.write(i)
         
+        # category
+
         for i in range(insertindex+1, categoryindex+1):
             f_html.write(h_template_lines[i])
 
