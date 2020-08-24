@@ -12,7 +12,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body>
+<body onload="checkCookie()">
     <header>
         <a onclick="togglecolor()" id="togglecolor">暗色模式</a>
         <div class="headertext">
@@ -65,6 +65,7 @@
 <p>- [ ] 支持我常用的md语法(不是全部)</p>
 <p>    - [X] 各级标题</p>
 <p>    - [X] 无序列表</p>
+<p>    - [ ] 外部超链接</p>
 <p>- [ ] 支持在md文件中加入额外内容, 如创建时间, 修改时间, 分类tag等</p>
 <p>- [ ] 支持直接写无需翻译的html</p>
 <p>- [ ] 生成html时自动跳过未经更改的md文件</p>
@@ -73,11 +74,11 @@
 <h3>CSS</h3><a name="CSS"></a>
 <p>- [X] 亮色模式</p>
 <p>- [X] 暗色模式</p>
-<p>- [ ] 在打开新标签时记住当前模式并应用于新标签页</p>
-<p>- [ ] 自动应用于各级目录</p>
+<p>- [X] 在打开新标签时记住当前模式并应用于新标签页</p>
+<p>- [X] 自动应用于各级目录</p>
 <h3>小部件</h3><a name="小部件"></a>
 <p>- [X] 切换配色按钮</p>
-<p>- [ ] 文章目录</p>
+<p>- [X] 文章目录</p>
 <h3>大目标</h3><a name="大目标"></a>
 <p>- [ ] [响应式网页设计简单入门](https://www.cnblogs.com/Wayou/p/responsive_design_step_by_step.html)</p>
 <p>- [ ] 也许编译原理有助于翻译器的设计, 现在这个太蠢了</p>
@@ -201,12 +202,46 @@
             stylesheet.href = darkpath;
             isColorLight = false;
             togglecolorbtm.innerHTML = "亮色模式";
+            document.cookie = "isColorLight=false; SameSite=None; Secure";
         }
         else
         {
             stylesheet.href = lightpath;
             isColorLight = true;
             togglecolorbtm.innerHTML = "暗色模式";
+            document.cookie = "isColorLight=true; SameSite=None; Secure";
+        }
+    }
+
+    function getCookie(cname){
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+        }
+        return "";
+    }
+
+    function checkCookie(){
+        var colortype=getCookie("isColorLight");
+        if (colortype!=""){
+            if(colortype == "true")
+            {
+                isColorLight = true;
+            }
+            else
+            {
+                isColorLight = false;
+            }
+            togglecolor();
+            togglecolor();
+        }
+        else {
+            document.cookie = "isColorLight=true; SameSite=None; Secure";
+            isColorLight = true;
+            togglecolor();
+            togglecolor();
         }
     }
 

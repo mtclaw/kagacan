@@ -12,7 +12,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body>
+<body onload="checkCookie()">
     <header>
         <a onclick="togglecolor()" id="togglecolor">暗色模式</a>
         <div class="headertext">
@@ -183,12 +183,46 @@
             stylesheet.href = darkpath;
             isColorLight = false;
             togglecolorbtm.innerHTML = "亮色模式";
+            document.cookie = "isColorLight=false; SameSite=None; Secure";
         }
         else
         {
             stylesheet.href = lightpath;
             isColorLight = true;
             togglecolorbtm.innerHTML = "暗色模式";
+            document.cookie = "isColorLight=true; SameSite=None; Secure";
+        }
+    }
+
+    function getCookie(cname){
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+        }
+        return "";
+    }
+
+    function checkCookie(){
+        var colortype=getCookie("isColorLight");
+        if (colortype!=""){
+            if(colortype == "true")
+            {
+                isColorLight = true;
+            }
+            else
+            {
+                isColorLight = false;
+            }
+            togglecolor();
+            togglecolor();
+        }
+        else {
+            document.cookie = "isColorLight=true; SameSite=None; Secure";
+            isColorLight = true;
+            togglecolor();
+            togglecolor();
         }
     }
 
