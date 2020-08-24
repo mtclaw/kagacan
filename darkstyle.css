@@ -3,6 +3,14 @@ body {
     background-color: #8cc7dc;
 }
 
+.content p {
+    color: #ffffff;
+}
+
+.content ul, li {
+    color: #ffffff;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -24,6 +32,7 @@ header {
     text-align: left;
     border-style: solid;
     border-width: 2px 0px 2px 0px;
+    border-color: #000000;
 }
 
 .headertext {
@@ -72,6 +81,11 @@ nav a:hover {
     top: 0;
 }
 
+.stickycategory {
+    position: fixed;
+    top: 0;
+}
+
 .sticky + .content {
 padding-top: 60px;
 }
@@ -80,12 +94,15 @@ padding-top: 60px;
     color: #ffb300;
 }
 
+.content h3, h4{
+    color: #ffffff;
+}
+
 #category{
     position: fixed;
     right: 40px;
-    top: 100px;
+    top: 250px;
     width: 20%;
-    visibility: hidden;
     background-color: #61b7cf;
     color: #000000;
     border-style: solid;
@@ -144,7 +161,7 @@ padding-top: 60px;
     z-index: 99;
     position: fixed;
     right: 0px;
-    bottom: 115px;
+    bottom: 90px;
     border: none;
     outline: none;
     background-color: #ffb300;

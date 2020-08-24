@@ -52,7 +52,7 @@
 <h3>首页</h3><a name="首页"></a>
 <p>- [X] 欢迎</p>
 <p>- [X] 关于社团活动</p>
-<p>- [ ] 作品列表</p>
+<p>- [X] 作品列表</p>
 <h3>简介</h3><a name="简介"></a>
 <p>- [X] Kagacan</p>
 <p>- [X] mtc</p>
@@ -72,11 +72,11 @@
 <p>- [ ] 自动生成可以被thunderbird解析的rss.xml</p>
 <h3>CSS</h3><a name="CSS"></a>
 <p>- [X] 亮色模式</p>
-<p>- [ ] 暗色模式</p>
+<p>- [X] 暗色模式</p>
 <p>- [ ] 在打开新标签时记住当前模式并应用于新标签页</p>
 <p>- [ ] 自动应用于各级目录</p>
 <h3>小部件</h3><a name="小部件"></a>
-<p>- [ ] 切换配色按钮</p>
+<p>- [X] 切换配色按钮</p>
 <p>- [ ] 文章目录</p>
 <h3>大目标</h3><a name="大目标"></a>
 <p>- [ ] [响应式网页设计简单入门](https://www.cnblogs.com/Wayou/p/responsive_design_step_by_step.html)</p>
@@ -89,6 +89,7 @@
 <h2>经验和教训</h2><a name="经验和教训"></a>
 <ul>
 <li>假如你写 for in 循环, 就不要在循环体里改数组长度.</li>
+</ul>
         
     </div>
     
@@ -162,13 +163,13 @@
         if (window.pageYOffset >= sticky) 
         {
             navbar.classList.add("sticky")
-            category.style.visibility="visible";
+            category.style.top = "100px";
             gototopbtn.style.visibility="visible";
         } 
         else 
         {
             navbar.classList.remove("sticky");
-            category.style.visibility="hidden";
+            category.style.top = 250 - window.pageYOffset + "px";
             gototopbtn.style.visibility="hidden";
         }
     }
@@ -190,17 +191,20 @@
     var stylesheet = document.getElementsByTagName("link")[0];
     var togglecolorbtm = document.getElementById("togglecolor");
 
+    var darkpath = "../../darkstyle.css";
+    var lightpath = "../../lightstyle.css";
+
     function togglecolor()
     {
         if(isColorLight)
         {
-            stylesheet.href = "darkstyle.css";
+            stylesheet.href = darkpath;
             isColorLight = false;
             togglecolorbtm.innerHTML = "亮色模式";
         }
         else
         {
-            stylesheet.href = "lightstyle.css";
+            stylesheet.href = lightpath;
             isColorLight = true;
             togglecolorbtm.innerHTML = "暗色模式";
         }

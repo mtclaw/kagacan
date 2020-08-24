@@ -79,13 +79,13 @@
         if (window.pageYOffset >= sticky) 
         {
             navbar.classList.add("sticky")
-            category.style.visibility="visible";
+            category.style.top = "100px";
             gototopbtn.style.visibility="visible";
         } 
         else 
         {
             navbar.classList.remove("sticky");
-            category.style.visibility="hidden";
+            category.style.top = 250 - window.pageYOffset + "px";
             gototopbtn.style.visibility="hidden";
         }
     }
@@ -107,17 +107,20 @@
     var stylesheet = document.getElementsByTagName("link")[0];
     var togglecolorbtm = document.getElementById("togglecolor");
 
+    var darkpath = "darkstyle.css";
+    var lightpath = "lightstyle.css";
+
     function togglecolor()
     {
         if(isColorLight)
         {
-            stylesheet.href = "darkstyle.css";
+            stylesheet.href = darkpath;
             isColorLight = false;
             togglecolorbtm.innerHTML = "亮色模式";
         }
         else
         {
-            stylesheet.href = "lightstyle.css";
+            stylesheet.href = lightpath;
             isColorLight = true;
             togglecolorbtm.innerHTML = "暗色模式";
         }

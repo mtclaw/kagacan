@@ -43,6 +43,9 @@ def replaceultag(f_md_lines):
         else:
             if(ulbodylayer != 0):
                 f_md_lines[i] = "<li>" + (f_md_lines[i][headmarkgrade+1:]).rstrip('\n') + "</li>\n"
+    while(ulbodylayer != 0):
+        f_md_lines[len(f_md_lines)-1] = f_md_lines[len(f_md_lines)-1] + "</ul>\n"
+        ulbodylayer = ulbodylayer - 1
 
 def replaceheadtag(f_md_lines, headtag):
     layer = 0
@@ -117,6 +120,7 @@ if __name__ == "__main__":
     navindex = -1
     insertindex = -1
     categoryindex = -1
+    darkpathindex = -1
     for i in range(0, len(h_template_lines)-1):
         cssmark = re.search("<link", h_template_lines[i])
         if(cssmark != None):
@@ -130,6 +134,9 @@ if __name__ == "__main__":
         categorymark = re.search("categorycontent", h_template_lines[i])
         if(categorymark != None):
             categoryindex = i
+        darkpathmark = re.search("var darkpath", h_template_lines[i])
+        if(darkpathmark != None):
+            darkpathindex = i
     h_template.close()
 
     # write into .html by line 
@@ -184,16 +191,22 @@ if __name__ == "__main__":
 
         for i in f_md_lines:
             f_html.write(i)
-        
-        # category
 
         for i in range(insertindex+1, categoryindex+1):
             f_html.write(h_template_lines[i])
 
+        # category
         for i in headtag:
             f_html.write(i)
         
-        for i in range(categoryindex+1, len(h_template_lines)-1):
+        for i in range(categoryindex+1, darkpathindex):
+            f_html.write(h_template_lines[i])
+
+        # css <rely on r_path>
+        f_html.write(h_template_lines[darkpathindex].replace("darkstyle.css", r_path + "darkstyle.css"))
+        f_html.write(h_template_lines[darkpathindex+1].replace("lightstyle.css", r_path + "lightstyle.css"))
+
+        for i in range(darkpathindex+2, len(h_template_lines)-1):
             f_html.write(h_template_lines[i])
 
         f_html.close()
